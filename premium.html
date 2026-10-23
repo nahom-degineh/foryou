@@ -1,0 +1,1606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIGITALGIFT Premium PackageDemo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #17243b;
+        --navy-light: #253959;
+        --cream: #f7f3eb;
+        --gold: #c6a66b;
+        --gold-dark: #a9874b;
+        --gold-light: #e8d3ab;
+        --white: #ffffff;
+        --muted: #5a6578;
+        --border: rgba(23, 36, 59, 0.08);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        background-color: var(--cream);
+        color: var(--navy);
+        line-height: 1.6;
+        overflow-x: hidden;
+        padding-bottom: 4rem;
+      }
+      .demo-bar {
+        background: var(--navy);
+        color: var(--cream);
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        letter-spacing: 0.04em;
+      }
+      .demo-badge {
+        color: var(--gold);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+      }
+      .container {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 1.5rem 1.25rem;
+      }
+
+      /* Top Controls Bar */
+      .controls-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 40px;
+        padding: 12px 16px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 14px rgba(23, 36, 59, 0.03);
+      }
+
+      /* Song title on the left */
+      .audio-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      /* Both buttons grouped at the right */
+      .controls-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+
+      /* Music animation */
+      .playing .audio-wave span:nth-child(1) {
+        animation: wave 0.8s ease-in-out infinite;
+      }
+
+      .playing .audio-wave span:nth-child(2) {
+        animation: wave 1.1s ease-in-out infinite 0.2s;
+      }
+
+      .playing .audio-wave span:nth-child(3) {
+        animation: wave 0.7s ease-in-out infinite 0.4s;
+      }
+
+      .playing .audio-wave span:nth-child(4) {
+        animation: wave 1s ease-in-out infinite 0.1s;
+      }
+
+      @media (max-width: 600px) {
+        .controls-bar {
+          border-radius: 22px;
+          align-items: flex-start;
+        }
+
+        .audio-info {
+          width: 100%;
+          overflow-wrap: anywhere;
+        }
+
+        .controls-actions {
+          width: 100%;
+          justify-content: flex-end;
+          flex-wrap: wrap;
+        }
+      }
+
+      .audio-wave {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        height: 14px;
+      }
+      .audio-wave span {
+        width: 2px;
+        height: 100%;
+        background: var(--gold);
+        border-radius: 1px;
+      }
+      .audio-info.playing .audio-wave span:nth-child(1) {
+        animation: wave 0.8s ease-in-out infinite;
+      }
+
+      .audio-info.playing .audio-wave span:nth-child(2) {
+        animation: wave 1.1s ease-in-out infinite 0.2s;
+      }
+
+      .audio-info.playing .audio-wave span:nth-child(3) {
+        animation: wave 0.7s ease-in-out infinite 0.4s;
+      }
+
+      .audio-info.playing .audio-wave span:nth-child(4) {
+        animation: wave 1s ease-in-out infinite 0.1s;
+      }
+      @keyframes wave {
+        0%,
+        100% {
+          height: 4px;
+        }
+        50% {
+          height: 14px;
+        }
+      }
+      .audio-btn {
+        background: var(--navy);
+        color: var(--white);
+        border: none;
+        border-radius: 20px;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        transition: background 0.2s;
+      }
+      .audio-btn:hover {
+        background: #243552;
+      }
+
+      .btn-pill {
+        background: var(--navy);
+        color: var(--white);
+        border: none;
+        border-radius: 20px;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        transition: all 0.2s;
+      }
+      .btn-pill:hover {
+        background: var(--navy-light);
+      }
+      .btn-gold {
+        background: var(--gold);
+        color: #17243b;
+      }
+      .btn-gold:hover {
+        background: var(--gold-dark);
+        color: #fff;
+      }
+
+      /* Hero */
+      .hero {
+        text-align: center;
+        padding: 0.75rem 0.5rem 1.5rem;
+        position: relative;
+      }
+      .hero-kicker {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--gold-dark);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .hero h1 {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(2.4rem, 10vw, 3rem);
+        font-weight: 600;
+        line-height: 1.05;
+        color: var(--navy);
+        margin-bottom: 0.9rem;
+        text-wrap: balance;
+      }
+      .hero p {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.5;
+        max-width: 580px;
+        margin: 0 auto;
+      }
+
+      /* Video Player Integration */
+      .video-showcase-card {
+        background: var(--white);
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        padding: 1.1rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 8px 30px rgba(23, 36, 59, 0.05);
+      }
+      .video-label-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .video-label-title {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--navy);
+      }
+      .video-container {
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+        width: 100%;
+        background: #0d1624;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .video-canvas {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .video-overlay-control {
+        position: absolute;
+        inset: 0;
+        background: rgba(13, 22, 36, 0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1rem;
+        transition: opacity 0.3s;
+      }
+      .video-overlay-control.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .video-play-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(198, 166, 107, 0.9);
+        border: 2px solid #fff;
+        color: #17243b;
+        font-size: 1.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+      }
+      .video-play-center:hover {
+        transform: translate(-50%, -50%) scale(1.08);
+        background: #fff;
+      }
+      .video-caption-bar {
+        color: #fff;
+        font-size: 0.85rem;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
+        align-self: center;
+      }
+      .video-bottom-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: #fff;
+        font-size: 0.75rem;
+      }
+      .video-progress-bar {
+        flex: 1;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .video-progress-fill {
+        height: 100%;
+        width: 35%;
+        background: var(--gold);
+        transition: width 0.1s linear;
+      }
+
+      /* Interactive Surprises Section */
+      .surprises-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      @media (max-width: 680px) {
+        .surprises-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .surprise-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1.75rem;
+        text-align: center;
+        box-shadow: 0 4px 18px rgba(23, 36, 59, 0.04);
+        position: relative;
+      }
+      .surprise-card h3 {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.5rem;
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+      }
+      .surprise-card p {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+      }
+
+      /* Virtual Cake & Candles */
+      .cake-stage {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .candles-row {
+        display: flex;
+        gap: 1.2rem;
+        margin-bottom: -4px;
+        z-index: 2;
+      }
+      .candle {
+        width: 10px;
+        height: 38px;
+        background: repeating-linear-gradient(
+          45deg,
+          #fff,
+          #fff 4px,
+          var(--gold) 4px,
+          var(--gold) 8px
+        );
+        border-radius: 3px 3px 0 0;
+        position: relative;
+        cursor: pointer;
+      }
+      .candle-flame {
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12px;
+        height: 18px;
+        background: radial-gradient(ellipse at bottom, #ffdd55, #ff7700 80%);
+        border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+        animation: flicker 0.15s infinite alternate;
+        box-shadow: 0 0 10px #ff9900;
+        transition: opacity 0.3s;
+      }
+      .candle.blown .candle-flame {
+        opacity: 0;
+        animation: none;
+      }
+      @keyframes flicker {
+        0% {
+          transform: translateX(-50%) scale(1);
+        }
+        100% {
+          transform: translateX(-50%) scale(1.15) rotate(2deg);
+        }
+      }
+      .cake-base {
+        width: 140px;
+        height: 50px;
+        background: linear-gradient(to bottom, #f5e8d0, #e4d0b0);
+        border-radius: 8px 8px 12px 12px;
+        border: 2px solid #d6bc94;
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .cake-frosting {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 12px;
+        background: #ffffff;
+        border-radius: 6px 6px 4px 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .cake-toast-msg {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--gold-dark);
+        min-height: 1.5rem;
+      }
+
+      /* Surprise Gift Box */
+      .gift-box-stage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 0;
+      }
+      .gift-box-graphic {
+        width: 90px;
+        height: 90px;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .gift-box-graphic:hover {
+        transform: scale(1.05);
+      }
+      .gift-box-body {
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+        right: 10px;
+        height: 60px;
+        background: var(--navy);
+        border-radius: 8px;
+        box-shadow: 0 6px 14px rgba(23, 36, 59, 0.2);
+      }
+      .gift-box-lid {
+        position: absolute;
+        top: 15px;
+        left: 5px;
+        right: 5px;
+        height: 20px;
+        background: #253959;
+        border-radius: 6px;
+        border-bottom: 2px solid var(--gold);
+        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .unwrapped .gift-box-lid {
+        transform: translateY(-24px) rotate(-15deg);
+      }
+      .gift-ribbon-v {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 14px;
+        height: 100%;
+        background: var(--gold);
+      }
+      .gift-ribbon-h {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 12px;
+        background: var(--gold);
+      }
+      .secret-wish-reveal {
+        margin-top: 1rem;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.1rem;
+        font-style: italic;
+        color: var(--navy);
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+      .unwrapped .secret-wish-reveal {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Interactive Polaroids */
+      .polaroid-deck {
+        margin-top: 3rem;
+        text-align: center;
+      }
+      .deck-title {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.8rem;
+        color: var(--navy);
+        margin-bottom: 1.5rem;
+      }
+      .polaroid-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      @media (max-width: 640px) {
+        .polaroid-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .polaroid {
+        background: #fff;
+        padding: 0.75rem 0.75rem 1.25rem;
+        border-radius: 6px;
+        border: 1px solid rgba(23, 36, 59, 0.08);
+        box-shadow: 0 4px 14px rgba(23, 36, 59, 0.05);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+      .polaroid:nth-child(1) {
+        transform: rotate(-2deg);
+      }
+      .polaroid:nth-child(2) {
+        transform: rotate(1deg);
+      }
+      .polaroid:nth-child(3) {
+        transform: rotate(-1deg);
+      }
+      .polaroid:hover {
+        transform: scale(1.04) rotate(0deg) !important;
+        box-shadow: 0 10px 24px rgba(23, 36, 59, 0.12);
+        z-index: 10;
+      }
+      .polaroid img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 0.6rem;
+      }
+      .polaroid-caption {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.05rem;
+        color: var(--navy);
+      }
+
+      /* Confetti Canvas */
+      #confettiCanvas {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+      }
+      .footer-note {
+        text-align: center;
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 3.5rem;
+      }
+
+      .site-footer {
+        margin-top: auto;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        padding: 18px 20px;
+        background: #071a3d;
+        color: #cbd5e1;
+        font-size: 13px;
+        text-align: center;
+      }
+
+      .site-footer p {
+        margin: 0;
+      }
+
+      .site-footer a {
+        color: #e7bd62;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .site-footer a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 480px) {
+        .site-footer {
+          flex-direction: column;
+          gap: 8px;
+        }
+      }
+      /* DIGITALGIFT — Brand-matched puzzle gate */
+      .dg-lock-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        display: grid;
+        place-items: center;
+        overflow-y: auto;
+        padding: 24px 16px;
+
+        background:
+          radial-gradient(
+            ellipse at top,
+            rgba(201, 164, 96, 0.13),
+            transparent 60%
+          ),
+          linear-gradient(145deg, #101a2c, #18243a 60%, #0c1424);
+
+        color: #f8f5ed;
+        opacity: 1;
+        visibility: visible;
+        transition:
+          opacity 0.7s ease,
+          visibility 0.7s ease;
+      }
+
+      .dg-lock-overlay.dg-lock-leaving {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      body.dg-lock-active {
+        overflow: hidden !important;
+      }
+
+      .dg-lock-card {
+        width: min(100%, 430px);
+        margin: auto;
+        text-align: center;
+      }
+
+      .dg-lock-brand {
+        margin: 0 0 14px;
+        color: #d0ad6b;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 4px;
+      }
+
+      .dg-lock-card h1 {
+        margin: 0 auto 12px;
+        color: #fffaf0;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(25px, 6vw, 36px);
+        line-height: 1.2;
+      }
+
+      .dg-lock-instruction {
+        margin: 0 auto 20px;
+        color: #d7dce6;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .dg-lock-progress {
+        margin-bottom: 12px;
+        color: #e0bd78;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .dg-lock-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+        width: min(100%, 360px);
+        aspect-ratio: 1;
+        margin: 0 auto;
+        padding: 5px;
+        overflow: hidden;
+
+        border: 1px solid #c9a45f;
+        border-radius: 14px;
+        background: #c9a45f;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+
+        touch-action: none;
+        user-select: none;
+      }
+
+      .dg-lock-tile {
+        min-width: 0;
+        min-height: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 5px;
+        background-repeat: no-repeat;
+        cursor: grab;
+        -webkit-tap-highlight-color: transparent;
+        transition:
+          filter 0.15s ease,
+          outline 0.15s ease;
+      }
+
+      .dg-lock-tile:active {
+        cursor: grabbing;
+      }
+
+      .dg-lock-tile.dg-lock-selected {
+        outline: 3px solid #f4d99d;
+        outline-offset: -3px;
+        filter: brightness(1.15);
+      }
+
+      .dg-lock-tile:focus-visible {
+        outline: 3px solid #ffffff;
+        outline-offset: -3px;
+      }
+
+      .dg-lock-hint {
+        margin: 14px 0 0;
+        color: #cbd2df;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .dg-lock-success {
+        padding-top: 12px;
+        animation: dgLockPop 0.55s ease both;
+      }
+
+      .dg-lock-success h2 {
+        margin: 8px 0;
+        color: #e5c27f;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 600;
+        font-size: 28px;
+      }
+
+      .dg-lock-success p {
+        color: #f8f5ed;
+        font-size: 14px;
+      }
+
+      .dg-lock-hearts {
+        font-size: 28px;
+        animation: dgLockHeartBeat 1s ease-in-out infinite alternate;
+      }
+
+      @keyframes dgLockPop {
+        from {
+          opacity: 0;
+          transform: scale(0.85);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes dgLockHeartBeat {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.12);
+        }
+      }
+
+      @media (max-width: 380px) {
+        .dg-lock-overlay {
+          padding: 16px 12px;
+        }
+
+        .dg-lock-instruction {
+          margin-bottom: 14px;
+        }
+
+        .dg-lock-grid {
+          gap: 3px;
+          padding: 4px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dg-lock-overlay,
+        .dg-lock-tile {
+          transition: none;
+        }
+
+        .dg-lock-success,
+        .dg-lock-hearts {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- DIGITALGIFT puzzle gate -->
+    <div class="dg-lock-overlay" id="dgLockOverlay">
+      <div class="dg-lock-card">
+        <p class="dg-lock-brand">DIGITALGIFT PUZZLE</p>
+        <h1>A Little Surprise Awaits;</h1>
+        <p class="dg-lock-instruction">
+          Solve the puzzle to reveal your special gift.
+        </p>
+
+        <div class="dg-lock-progress" id="dgLockProgress">
+          0 of 9 pieces correct
+        </div>
+
+        <div
+          class="dg-lock-grid"
+          id="dgLockGrid"
+          aria-label="Photo puzzle. Move the pieces into the correct positions."
+        ></div>
+
+        <p class="dg-lock-hint" id="dgLockHint">
+          Drag pieces to swap them, or tap two pieces.
+        </p>
+
+        <div class="dg-lock-success" id="dgLockSuccess" hidden>
+          <div class="dg-lock-hearts">💖 💕 💖</div>
+          <h2>Happy Birthday, Melat! You did it!</h2>
+          <p>Your special surprise is ready. ❤️</p>
+        </div>
+      </div>
+    </div>
+    <!-- End DIGITALGIFT puzzle gate -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <div class="demo-bar">
+      <span>DIGITALGIFT Made for Melat</span>
+      <span class="demo-badge">· For the Special One!</span>
+    </div>
+
+    <div class="container">
+      <!-- Top Action Controls -->
+
+      <!-- Top Action Controls -->
+      <div class="controls-bar" id="audioBar">
+        <!-- Song title stays on the left -->
+        <div class="audio-info">
+          <div class="audio-wave">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <span><strong>በእረኝነቱ by Aster Abebe</strong></span>
+        </div>
+
+        <!-- Both buttons stay together on the right -->
+        <div class="controls-actions">
+          <button class="audio-btn" id="playAudioBtn" onclick="toggleAudio()">
+            <span id="playIcon">▶</span>
+            <span id="playText">Play Music</span>
+          </button>
+
+          <button class="btn-pill btn-gold" onclick="launchConfettiCannon()">
+            🎉 Confetti Burst
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-kicker">Milestone 25th Celebration</div>
+        <h1>Happy 25th Birthday, Melat!</h1>
+        <p>
+          Wishing you a day filled with love, laughter, and unforgettable
+          memories. may this year bring you endless joy and success in all your
+          endeavors.
+        </p>
+      </div>
+
+      <!-- Video Integration Showcase -->
+      <div class="video-showcase-card">
+        <div class="video-label-bar">
+          <div class="video-label-title">my favorite video</div>
+          <span
+            style="
+              font-size: 0.75rem;
+              color: var(--gold-dark);
+              font-weight: 600;
+            "
+            >ADU(2018)</span
+          >
+        </div>
+        <div class="video-container" id="videoBox">
+          <video
+            class="video-canvas"
+            id="premiumVideo"
+            controls
+            playsinline
+            preload="metadata"
+          >
+            <source src="./media/video.mp4" type="video/mp4" />
+            Your browser does not support HTML video.
+          </video>
+          <div class="video-overlay-control" id="videoOverlay">
+            <div style="font-size: 0.75rem; color: #fff; opacity: 0.85">
+              DIGITALGIFT Montage · "Memories With melat"
+            </div>
+            <button
+              class="video-play-center"
+              id="playVideoBtn"
+              type="button"
+              onclick="document.getElementById('premiumVideo').play()"
+            >
+              ▶
+            </button>
+            <div>
+              <div class="video-caption-bar" id="montageSubtitle">
+                Press play to watch the tribute film
+              </div>
+              <div class="video-bottom-controls" style="margin-top: 0.5rem">
+                <span id="videoTime">0:00 / 0:30</span>
+                <div class="video-progress-bar" onclick="seekVideo(event)">
+                  <div
+                    class="video-progress-fill"
+                    id="videoProgress"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Birthday Surprises -->
+      <div class="surprises-grid">
+        <!-- Surprise 1: Interactive Cake -->
+        <div class="surprise-card">
+          <h3>Make a Birthday Wish</h3>
+          <p>Click candles to light them, or tap below to blow them out!</p>
+
+          <div class="cake-stage">
+            <div class="candles-row">
+              <div class="candle" id="c1" onclick="toggleCandle(this)">
+                <div class="candle-flame"></div>
+              </div>
+              <div class="candle" id="c2" onclick="toggleCandle(this)">
+                <div class="candle-flame"></div>
+              </div>
+              <div class="candle" id="c3" onclick="toggleCandle(this)">
+                <div class="candle-flame"></div>
+              </div>
+            </div>
+            <div class="cake-base">
+              <div class="cake-frosting"></div>
+            </div>
+          </div>
+          <button
+            class="btn-pill btn-gold"
+            style="margin-top: 0.85rem"
+            onclick="blowCandles()"
+          >
+            🎂 Blow Out Candles
+          </button>
+          <div class="cake-toast-msg" id="cakeMsg">
+            Candles are glowing bright!
+          </div>
+        </div>
+
+        <!-- Surprise 2: 3D Unwrap Gift Box -->
+        <div class="surprise-card" id="giftBoxContainer">
+          <h3>Unwrap Your Gift</h3>
+          <p>Tap the golden box to reveal your surprise message.</p>
+
+          <div class="gift-box-stage">
+            <div class="gift-box-graphic" onclick="unwrapGift()">
+              <div class="gift-box-body">
+                <div class="gift-ribbon-v"></div>
+              </div>
+              <div class="gift-box-lid">
+                <div class="gift-ribbon-v"></div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="btn-pill"
+            style="margin-top: 0.85rem"
+            onclick="unwrapGift()"
+          >
+            🎁 Tap to Open
+          </button>
+          <div class="secret-wish-reveal" id="secretWish">
+            “you might think i hated you, but today i want to say that my gift
+            for your birthday is my endless love forever!”
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Polaroid Deck -->
+      <div class="polaroid-deck">
+        <h2 class="deck-title">Some of Our Memories</h2>
+        <p>Tap the photos to see descriptions</p>
+        <div class="polaroid-grid">
+          <div
+            class="polaroid"
+            onclick="
+              alertMemory(
+                '2016 ADU, that was unforgettable year, since that first day i huged you from back and you were so surprised, i was so happy to see your smile that day.',
+              )
+            "
+          >
+            <img
+              src="/media/img01.jpg"
+              alt="melat celebration"
+              onerror="this.src = '/media/img01.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="
+              alertMemory(
+                '2016 ADU, First time celebrating your birthday together, incase you didnt knew, that was my idea ',
+              )
+            "
+          >
+            <img
+              src="/media/img02.jpg"
+              alt="melat celebration"
+              onerror="this.src = '/media/img02.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="alertMemory('just a normal day around our class')"
+          >
+            <img
+              src="/media/img03.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img03.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="
+              alertMemory(
+                'We ended up in a pool house,I wish we played a little bit',
+              )
+            "
+          >
+            <img
+              src="/media/img04.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img04.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="
+              alertMemory(
+                'You guys left me alone, but you didnt come with nothing, you bring me Ambasha with my name in it,i loved it',
+              )
+            "
+          >
+            <img
+              src="/media/img05.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img05.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="
+              alertMemory(
+                'This was my favorite day at megenagna,holding your hand and eating my favorite food(you)',
+              )
+            "
+          >
+            <img
+              src="/media/img06.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img06.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="alertMemory('I just love this photo, you look beautiful ')"
+          >
+            <img
+              src="/media/img07.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img07.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="
+              alertMemory(
+                'This was my best memory with you, our first kiss, i will never forget that day, i was so nervous and you were so calm, i loved it',
+              )
+            "
+          >
+            <img
+              src="/media/img08.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img08.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="alertMemory('Wubit will be in my heart forever!')"
+          >
+            <img
+              src="/media/img09.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img09.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="alertMemory('emuahhhh,i just love kissing you')"
+          >
+            <img
+              src="/media/img10.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img10.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div
+            class="polaroid"
+            onclick="
+              alertMemory(
+                'i knew there was something inside you, because u werent happy every single day with me, i knew you were gonna leave me, but i didnt care, i just wanted to be with you',
+              )
+            "
+          >
+            <img
+              src="/media/img11.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img11.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+          <div class="polaroid" onclick="alertMemory('photoshot of the year!')">
+            <img
+              src="/media/img12.jpg"
+              alt="Melat celebration"
+              onerror="this.src = '/media/img12.jpg'"
+            />
+            <div class="polaroid-caption">Tap to see a message ✦</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        Crafted with DIGITALGIFT · Premium Interactive Experience
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>
+        &copy; <span id="copyright-year"></span> DIGITALGIFT. All rights
+        reserved.
+      </p>
+      <a
+        href="https://digitalgift.com.et"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Click Here to Visit Our Main Site
+      </a>
+    </footer>
+    <audio id="premiumAudio" src="./media/test.mp3" loop></audio>
+
+    <script>
+      document.getElementById("copyright-year").textContent =
+        new Date().getFullYear();
+    </script>
+
+    <script>
+      // Audio synthesis for Premium Celebration
+      let audioCtx = null;
+      let isPlaying = false;
+      let musicInterval = null;
+
+      function playChime(freq, time, dur = 0.5) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, time);
+        gain.gain.setValueAtTime(0.001, time);
+        gain.gain.exponentialRampToValueAtTime(0.2, time + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, time + dur);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(time);
+        osc.stop(time + dur);
+      }
+
+      const chords = [
+        [261.63, 329.63, 392.0, 523.25],
+        [329.63, 392.0, 493.88, 659.25],
+        [349.23, 440.0, 523.25, 698.46],
+        [392.0, 493.88, 587.33, 783.99],
+      ];
+
+      function toggleAudio() {
+        const audioInfo = document.querySelector(".audio-info");
+        const audio = document.getElementById("premiumAudio");
+        const btnText = document.getElementById("playText");
+        const btnIcon = document.getElementById("playIcon");
+
+        if (audio.paused) {
+          audio
+            .play()
+            .then(() => {
+              btnText.textContent = "Pause Music";
+              btnIcon.textContent = "⏸";
+              audioInfo.classList.add("playing");
+            })
+            .catch((error) => {
+              console.error("Audio playback failed:", error);
+              alert(
+                "Couldn't play the music. Check that media/test.mp3 exists in the media folder.",
+              );
+            });
+        } else {
+          audio.pause();
+          btnText.textContent = "Play Music";
+          btnIcon.textContent = "▶";
+          audioInfo.classList.remove("playing");
+        }
+      }
+
+      // Interactive Cake
+      function toggleCandle(candleEl) {
+        candleEl.classList.toggle("blown");
+        checkCandles();
+      }
+      function blowCandles() {
+        document
+          .querySelectorAll(".candle")
+          .forEach((c) => c.classList.add("blown"));
+        document.getElementById("cakeMsg").textContent =
+          "🎉 Your wish has been made! media/test.mp3!";
+        launchConfettiCannon();
+      }
+      function checkCandles() {
+        const total = document.querySelectorAll(".candle").length;
+        const blown = document.querySelectorAll(".candle.blown").length;
+        if (blown === total) {
+          document.getElementById("cakeMsg").textContent =
+            "✨ All candles blown! Make a secret wish!";
+        } else {
+          document.getElementById("cakeMsg").textContent =
+            `${total - blown} candle(s) glowing bright!`;
+        }
+      }
+
+      // Gift Box Unwrap
+      function unwrapGift() {
+        const box = document.getElementById("giftBoxContainer");
+        box.classList.toggle("unwrapped");
+        if (box.classList.contains("unwrapped")) {
+          launchConfettiCannon();
+        }
+      }
+
+      // Memory Note feedback
+      function alertMemory(text) {
+        const toast = document.createElement("div");
+        toast.style.cssText =
+          "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17243B;color:#F7F3EB;padding:0.75rem 1.25rem;border-radius:10px;font-size:0.9rem;box-shadow:0 8px 24px rgba(0,0,0,0.3);z-index:99999;transition:all 0.3s;max-width:90%;text-align:center;border:1px solid #C6A66B;";
+        toast.textContent = text;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+          toast.style.opacity = "0";
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+
+      // Confetti Cannon
+      function launchConfettiCannon() {
+        const c = document.getElementById("confettiCanvas");
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        const cCtx = c.getContext("2d");
+        const particles = [];
+        const colors = ["#C6A66B", "#17243B", "#FFFFFF", "#E8D3AB", "#E25858"];
+
+        for (let i = 0; i < 90; i++) {
+          particles.push({
+            x: c.width / 2 + (Math.random() - 0.5) * 100,
+            y: c.height / 2,
+            vx: (Math.random() - 0.5) * 16,
+            vy: (Math.random() - 1) * 18,
+            size: Math.random() * 8 + 4,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            vRot: (Math.random() - 0.5) * 10,
+            alpha: 1,
+          });
+        }
+
+        function animate() {
+          cCtx.clearRect(0, 0, c.width, c.height);
+          let alive = false;
+          particles.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.45; // gravity
+            p.rotation += p.vRot;
+            p.alpha -= 0.01;
+            if (p.alpha > 0) alive = true;
+
+            cCtx.save();
+            cCtx.globalAlpha = Math.max(0, p.alpha);
+            cCtx.translate(p.x, p.y);
+            cCtx.rotate((p.rotation * Math.PI) / 180);
+            cCtx.fillStyle = p.color;
+            cCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+            cCtx.restore();
+          });
+
+          if (alive) {
+            requestAnimationFrame(animate);
+          } else {
+            cCtx.clearRect(0, 0, c.width, c.height);
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      // Puzzle Gate Logic//
+      (() => {
+        const overlay = document.getElementById("dgLockOverlay");
+        const grid = document.getElementById("dgLockGrid");
+        const progress = document.getElementById("dgLockProgress");
+        const hint = document.getElementById("dgLockHint");
+        const success = document.getElementById("dgLockSuccess");
+
+        if (!overlay || !grid) return;
+
+        const photo = "./media/img07.jpg";
+        const pieceCount = 9;
+
+        let selectedTile = null;
+        let dragStart = null;
+        let completed = false;
+        let tiles = [];
+
+        document.body.classList.add("dg-lock-active");
+
+        // Prevent interaction with the covered website.
+        const backgroundElements = [...document.body.children].filter(
+          (element) =>
+            element !== overlay &&
+            !["SCRIPT", "STYLE"].includes(element.tagName),
+        );
+
+        backgroundElements.forEach((element) => {
+          element.inert = true;
+        });
+
+        // Check that the puzzle image exists.
+        const image = new Image();
+        image.src = photo;
+
+        image.onerror = () => {
+          hint.textContent =
+            "Puzzle photo not found. Add media/img05.jpg beside index.html.";
+        };
+
+        function createTile(piece) {
+          const tile = document.createElement("button");
+
+          tile.type = "button";
+          tile.className = "dg-lock-tile";
+          tile.dataset.piece = piece;
+          tile.setAttribute("aria-label", `Puzzle piece ${piece + 1}`);
+
+          const row = Math.floor(piece / 3);
+          const col = piece % 3;
+
+          tile.style.backgroundImage = `url("${photo}")`;
+          tile.style.backgroundSize = "300% 300%";
+          tile.style.backgroundPosition = `${col * 50}% ${row * 50}%`;
+          tile.style.backgroundRepeat = "no-repeat";
+
+          return tile;
+        }
+
+        function shufflePieces() {
+          const pieces = Array.from(
+            { length: pieceCount },
+            (_, index) => index,
+          );
+
+          // Fisher-Yates shuffle.
+          for (let i = pieces.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [pieces[i], pieces[j]] = [pieces[j], pieces[i]];
+          }
+
+          // Don't allow the puzzle to start already solved.
+          if (pieces.every((piece, index) => piece === index)) {
+            [pieces[0], pieces[1]] = [pieces[1], pieces[0]];
+          }
+
+          tiles = pieces.map(createTile);
+          grid.replaceChildren(...tiles);
+
+          updateProgress();
+        }
+
+        function swapTiles(first, second) {
+          if (completed || !first || !second || first === second) {
+            return;
+          }
+
+          const firstIndex = tiles.indexOf(first);
+          const secondIndex = tiles.indexOf(second);
+
+          if (firstIndex < 0 || secondIndex < 0) return;
+
+          [tiles[firstIndex], tiles[secondIndex]] = [
+            tiles[secondIndex],
+            tiles[firstIndex],
+          ];
+
+          grid.replaceChildren(...tiles);
+
+          selectedTile = null;
+
+          tiles.forEach((tile) => {
+            tile.classList.remove("dg-lock-selected");
+          });
+
+          updateProgress();
+        }
+
+        function updateProgress() {
+          const correct = tiles.reduce((total, tile, index) => {
+            return total + (Number(tile.dataset.piece) === index ? 1 : 0);
+          }, 0);
+
+          progress.textContent = `${correct} of 9 pieces correct`;
+
+          if (correct === pieceCount) {
+            unlockPage();
+          }
+        }
+
+        function unlockPage() {
+          if (completed) return;
+
+          completed = true;
+
+          progress.hidden = true;
+          hint.hidden = true;
+          success.hidden = false;
+
+          // Restore interaction with the original website.
+          backgroundElements.forEach((element) => {
+            element.inert = false;
+          });
+
+          window.setTimeout(() => {
+            overlay.classList.add("dg-lock-leaving");
+            document.body.classList.remove("dg-lock-active");
+
+            window.setTimeout(() => {
+              overlay.remove();
+            }, 750);
+          }, 2200);
+        }
+
+        // Detect the start of a drag or tap on a puzzle piece.
+        grid.addEventListener("pointerdown", (event) => {
+          const tile = event.target.closest(".dg-lock-tile");
+
+          if (!tile || completed) return;
+
+          dragStart = {
+            tile,
+            x: event.clientX,
+            y: event.clientY,
+          };
+        });
+
+        // Support dragging on desktop and touch devices.
+        document.addEventListener("pointerup", (event) => {
+          if (!dragStart || completed) {
+            dragStart = null;
+            return;
+          }
+
+          const start = dragStart;
+          dragStart = null;
+
+          const distance = Math.hypot(
+            event.clientX - start.x,
+            event.clientY - start.y,
+          );
+
+          const target = document
+            .elementFromPoint(event.clientX, event.clientY)
+            ?.closest(".dg-lock-tile");
+
+          if (distance > 8 && target && grid.contains(target)) {
+            swapTiles(start.tile, target);
+            return;
+          }
+
+          // Tap two pieces to swap them on mobile.
+          if (distance <= 8) {
+            if (selectedTile && selectedTile !== start.tile) {
+              swapTiles(selectedTile, start.tile);
+            } else {
+              selectedTile = start.tile;
+
+              tiles.forEach((tile) => {
+                tile.classList.toggle(
+                  "dg-lock-selected",
+                  tile === selectedTile,
+                );
+              });
+            }
+          }
+        });
+
+        shufflePieces();
+      })();
+      const birthdayVideo = document.getElementById("premiumVideo");
+      const videoOverlay = document.getElementById("videoOverlay");
+
+      birthdayVideo.addEventListener("play", () => {
+        videoOverlay.classList.add("hidden");
+      });
+
+      birthdayVideo.addEventListener("pause", () => {
+        videoOverlay.classList.remove("hidden");
+      });
+
+      birthdayVideo.addEventListener("ended", () => {
+        videoOverlay.classList.remove("hidden");
+      });
+    </script>
+  </body>
+</html>
